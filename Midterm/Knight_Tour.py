@@ -1,4 +1,5 @@
 from degree_map import create_d_map
+from visualization import visualize
 
 eight_moves = [(1,-2),(2,-1),(2,1),(1,2),(-1,2),(-2,1),(-2,-1),(-1,-2)]
 def init_dic_position_degree(n):
@@ -38,21 +39,15 @@ def knightTour(n, start_x, start_y):
             # print('step=',step,' I don\'t know how to do  at (',x,',',y,').')
             return dic_position_steps,2
 
+    # print ans~~~
+    for x in range(n):
+        for y in range(n):
+            print(format(dic_position_steps[x,y],'5'),end='')
+        print('\n')
     return dic_position_steps,0
 
 
 
 
-(dic,err)=knightTour(10, 0, 0)
-if err==0:
-    for x in range(10):
-        for y in range(10):
-            print(format(dic[x,y],'5'),end='')
-        print('\n')
-
-# for N in range(8,31,1):
-#     for x in range(N):
-#         for y in range(N):
-#             (dic,err)=knightTour(N,x,y)
-#             if err!=0:
-#                 print('N=',N,'start at:',x,',',y,'errCode:',err)
+(dic,err)=knightTour(20, 4, 5)
+visualize(20,dic,err)
